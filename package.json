@@ -4,7 +4,8 @@
   "description": "Testing Andela Project",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "nodemon",
+    "start:dev": "nodemon -x \"babel-node app.js\" "
   },
   "repository": "git@github.com:phantware/playground_andela.git",
   "author": "phantware <phantmoney2011@gmail.com>",
