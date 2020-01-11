@@ -1,0 +1,22 @@
+{
+  "name": "playground_andela",
+  "version": "1.0.0",
+  "description": "Testing Andela Project",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "repository": "git@github.com:phantware/playground_andela.git",
+  "author": "phantware <phantmoney2011@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "nodemon": "^2.0.2"
+  }
+}
