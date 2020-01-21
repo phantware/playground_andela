@@ -1,3 +1,4 @@
 {
-  "*.{js,jsx,css,html}": ["yarn prefix", "yarn fix"]
+  "*.{js,jsx}": "yarn prefix",
+  "*.{js,jsx,css,html}": ["yarn fix"]
 }
