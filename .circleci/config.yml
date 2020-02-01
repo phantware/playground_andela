@@ -24,9 +24,9 @@ jobs:
 
       - run: yarn test:travis
 
-      - run: |
+      - run: 
           name: freestyle 
-      command: 
+      command: |
         ls -al
         whoami
         echo i love coding says $CIRCLE_USERNAME
