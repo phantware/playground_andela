@@ -26,7 +26,7 @@ jobs:
 
       - run: 
           name: freestyle 
-      command: |
-        ls -al
-        whoami
-        echo i love coding says $CIRCLE_USERNAME
+          command: |
+            ls -al
+            whoami
+            echo i love coding says $CIRCLE_USERNAME
