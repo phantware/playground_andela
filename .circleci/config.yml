@@ -4,7 +4,7 @@ jobs:
     docker:
       - image: circleci/node:13
 
-    working_directory: ~/repo
+    # working_directory: ~/repo
 
     steps:
       - checkout
@@ -15,14 +15,14 @@ jobs:
 
             - v1-dependencies-
 
-      - run: npm install
+      - run: yarn install
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm run test:travis
+      - run: yarn test:travis
 
       - run:
           name: freestyle
