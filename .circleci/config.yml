@@ -2,18 +2,17 @@ version: 2
 jobs:
   build:
     docker:
-
       - image: circleci/node:13
 
     working_directory: ~/repo
 
     steps:
+      - checkout
 
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - checkout
 
       - run: yarn install
 
@@ -24,8 +23,8 @@ jobs:
 
       - run: yarn test:travis
 
-      - run: 
-          name: freestyle 
+      - run:
+          name: freestyle
           command: |
             ls -al
             whoami
