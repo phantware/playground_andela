@@ -10,7 +10,8 @@
     "start:dev": "nodemon -x \"babel-node app.js\" ",
     "test": "jest --watchAll --verbose",
     "test:jest": "jest --coverage",
-    "test:travis": "jest --coverage --coverageReporters=text-lcov | coveralls"
+    "test:travis": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test:circleci": "jest --coverage"
   },
   "repository": "git@github.com:phantware/playground_andela.git",
   "author": "phantware <phantmoney2011@gmail.com>",
