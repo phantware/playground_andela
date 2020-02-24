@@ -15,7 +15,7 @@ describe('TESTING ENDPOINTS', () => {
   it('GET /', (done) => {
     request(app)
       .get('/')
-      .send({ name: 'a' })
+      .send({ name: 'juwon' })
       .expect(200)
       .expect('Hello World')
       .end(done);
