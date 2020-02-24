@@ -9,7 +9,7 @@
     "fix": "prettier-eslint --write ",
     "start:dev": "nodemon -x \"babel-node server.js\" ",
     "test": "jest --watchAll --verbose",
-    "test:jests": "jest --coverage",
+    "test:jest": "jest --coverage",
     "test:traviss": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "start:db": "nodemon config/db.js"
   },
