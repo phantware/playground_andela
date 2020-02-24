@@ -17,7 +17,7 @@ describe('TESTING ENDPOINTS', () => {
       .get('/')
       .send({ name: 'juwon' })
       .expect(200)
-      .expect('Hello World')
+      .expect('juwon')
       .end(done);
   });
   it('should return 400 when name is empty', async () => {
