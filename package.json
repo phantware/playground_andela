@@ -10,7 +10,7 @@
     "start:dev": "nodemon -x \"babel-node server.js\" ",
     "test": "jest --watchAll --verbose",
     "test:jest": "jest --coverage",
-    "test:traviss": "jest --coverage --coverageReporters=text-lcov | coveralls",
+    "test:travis": "jest --coverage ",
     "start:db": "nodemon config/db.js"
   },
   "repository": "git@github.com:phantware/playground_andela.git",
