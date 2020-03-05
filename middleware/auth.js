@@ -6,15 +6,13 @@ const auth = (req, res, next) => {
     return res.status(401).send('No authorization header was specified');
   }
 
-  // let decoded;
+  let decoded;
   try {
-    const decoded = jwt.verify(token, 'AndelaPrivateKey');
-    // console.log('inside auth', decoded);
-    req.body.decoded = decoded;
+    decoded = jwt.verify(token, 'AndelaPrivateKey');
   } catch (ex) {
     return res.status(400).send('Token provided cannot be authenticated.');
   }
-
+  req.body.decoded = decoded;
   return next();
 };
 
