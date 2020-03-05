@@ -20,3 +20,20 @@
 
 // // ... spread operator
 // console.log(sum(...arrOfSum));
+
+const prepareGreenTea = () => 'Green Tea';
+const prepareBlackTea = () => 'Black Tea';
+const getTea = (numOfCups) => {
+  const teaCups = [];
+  const teaCups2 = [];
+  for (let cups = 1; cups <= numOfCups; cups += 1) {
+    const teaCup = prepareGreenTea();
+    const teaCups1 = prepareBlackTea();
+    teaCups.push(teaCup);
+    teaCups2.push(teaCups1);
+  }
+  return { teaCups, teaCups2 };
+};
+
+const tea4Teams = getTea(40);
+console.log(tea4Teams);
