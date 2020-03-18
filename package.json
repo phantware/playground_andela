@@ -4,8 +4,8 @@
   "description": "Testing Andela Project",
   "main": "app.js",
   "engines": {
-    "node": "13.7.0",
-    "yarn": "1.21.1"
+    "node": "13.7.x",
+    "yarn": "1.21.x"
   },
   "scripts": {
     "build": "babel ./src/ --out-dir build",
