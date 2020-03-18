@@ -14,11 +14,11 @@ WITH insertGifsComnt AS (
     INSERT INTO gifsComment(comment, gifsOnCommentId, gifsOwnerId) VALUES ($1, $2, $3) RETURNING *)
     SELECT comment, insertGifsComnt.createdOn, title, imageUrl, category FROM INSERT JOIN gifs ON inserted.gifsOnCommentId = gifs.id
 `;
-// GET SINGLE COMMENT
+// GET SINGLE GIF COMMENT
 export const getSingleComment = 'SELECT commentId, comment, gifsOwnerId FROM gifsComment WHERE gifsOnCommentId =  $1';
 
 //   ARTICLES
-export const createArticle = 'INSERT INTO articles (authorId, title, article, category) VALUES ($1,$2,$3,$4) RETURNING *';
+export const createArticle = 'INSERT INTO articles (authorId, title, article, category) VALUES ($1,$2,$3, array[$4]) RETURNING *';
 
 // FIND A SINGLE ARTICLE
 export const findArticle = 'SELECT * FROM articles WHERE articleId = $1';
@@ -29,22 +29,27 @@ export const updateArticle = 'UPDATE articles SET title = $1, article = $2, cate
 
 //  DELETE ARTICLE
 
-export const deleteOwnArticle = 'DELETE * FROM aarticles WHERE articleId = $1 RETURNING *';
+export const deleteOwnArticle = 'DELETE FROM articles WHERE articleId = $1 RETURNING *';
 
 // CREATE COMMENT FOR ARTICLE
 
-export const createCommentForArticle = `WITH insertArticleComnt AS (
+export const createCommentForArticle = ` WITH insertArticleComnt AS (
   INSERT INTO articlecomments (
-    comment, articleOnCommentId, authorId) VALUES ($1,$2,$3) 
-  )
-  RETURNING *
-)
-SELECT comment, insertArticleComnt.createdOn, title, article, category FROM JOIN articles ON insertArticleComnt.articleOnCommentId = articles.articleId 
+    articleOnCommentedId,
+    authorid, comment
+  ) VALUES ($1,$2,$3)
+  RETURNING *                        
+)                                                                                                        
+SELECT comment, insertArticleComnt.createdOn, title, article, category 
+FROM insertArticleComnt JOIN articles ON insertArticleComnt.articleOnCommentedId = articles.articleid
   `;
 
 // GET SINGLE ARTICLE COMMENT
 
-export const getSingleArtcleComnt = 'SELECT * FROM commentId, comment, authorId FROM articlescomment WHERE articleOnCommentId = $1';
+export const getSingleArtcleComnt = 'SELECT commentid, comment, authorid FROM articlecomments WHERE articleOnCommentedId = $1';
+
+// Get Single Article
+export const getSingleArticle = 'SELECT createdon, title, article, category FROM articles WHERE articleid = $1';
 
 // VIEW ALL ARTICLES OR GIFS
 
@@ -54,7 +59,7 @@ SELECT articleId, createdOn, title, article, authorId, 'article' FROM articles W
 
 // GET ARTICLES BY CATEGORY
 
-export const articlesByCategory = 'SELECT * FROM articles WHERE category = $1';
+export const articlesByCategory = 'SELECT * FROM articles WHERE $1 = any(category)';
 
 //  GET ALL ARTICLES
 

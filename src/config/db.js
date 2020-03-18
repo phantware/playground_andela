@@ -1,6 +1,8 @@
+import './index';
+
 const { Pool } = require('pg');
 
-const connectionString = 'postgresql://postgres:postgres@localhost:5432/andela';
+const { CONNECTION_STRING: connectionString } = process.env;
 
 const pool = new Pool({ connectionString });
 

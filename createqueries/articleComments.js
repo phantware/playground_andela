@@ -1,10 +1,10 @@
 import pool from '../config/db';
 
 const createComment = `
-DROP TABLE IF EXISTS articlecomment CASCADE;
+DROP TABLE IF EXISTS articlecomments CASCADE;
 CREATE TABLE IF NOT EXISTS articlecomments (
     commentId BIGSERIAL PRIMARY KEY,
-    articleOnCommentId INTEGER NOT NULL,
+    articleOnCommentedId INTEGER NOT NULL,
     authorId INTEGER NOT NULL,
     comment TEXT NOT NULL,
     createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

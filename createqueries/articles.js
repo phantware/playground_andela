@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS articles (
     authorId INTEGER NOT NULL,
     title VARCHAR (130) NOT NULL,
     article TEXT NOT NULL,
-    category VARCHAR (130) NOT NULL,
+    category character varying[] NOT NULL,
     createdOn TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (authorId) REFERENCES employees(id) ON DELETE CASCADE
 )`;
