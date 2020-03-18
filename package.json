@@ -4,19 +4,24 @@
   "description": "Testing Andela Project",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "build": "babel ./src/ --out-dir build",
+    "start": "node ./build/server.js",
     "prefix": "eslint --fix",
     "fix": "prettier-eslint --write ",
-    "start:dev": "nodemon -x \"babel-node server.js\" ",
+    "start:dev": "nodemon -x \"babel-node ./src/server.js\" ", 
     "test": "jest --watchAll --verbose",
     "test:jest": "jest --coverage",
     "test:travis": "jest --coverage ",
-    "start:db": "nodemon config/db.js"
+    "start:db": "nodemon config/db.js",
+    "sql": "nodemon -x 'psql -c \"\\i playground/image.sql\" andela postgres'  -e sql  ",
+    "playground": "nodemon playground/obj-api.js",
+    "start-env": "nodemon config/index.js"
   },
   "repository": "git@github.com:phantware/playground_andela.git",
   "author": "phantware <phantmoney2011@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
     "@hapi/joi": "^17.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -24,12 +29,13 @@
     "global": "^4.4.0",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.9.1",
+    "multer": "^1.4.2",
     "pg": "^7.18.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/node": "^7.7.7",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.7.7",
     "@babel/register": "^7.8.3",

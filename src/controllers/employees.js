@@ -61,7 +61,7 @@ class Employees {
     }
 
     const { id, jobrole } = employeeRes.rows[0];
-    const payload = { id, email, jobrole };
+    const payload = { id, jobrole };
     const token = jwt.sign(payload, 'AndelaPrivateKey');
 
     return res
