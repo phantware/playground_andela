@@ -1,5 +1,6 @@
 node_modules
 coverage
 images/
-config/dev.js
-config/test.js
+src/config/dev.js
+src/config/test_env.js
+build
