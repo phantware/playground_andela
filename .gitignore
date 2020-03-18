@@ -3,4 +3,3 @@ coverage
 images/
 src/config/dev.js
 src/config/test_env.js
-build
