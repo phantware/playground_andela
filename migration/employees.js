@@ -1,4 +1,4 @@
-import pool from '../config/db';
+import pool from '../src/config/db';
 
 const employeesTable = `
 DROP TABLE IF EXISTS employees CASCADE ;

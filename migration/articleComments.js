@@ -1,4 +1,4 @@
-import pool from '../config/db';
+import pool from '../src/config/db';
 
 const createComment = `
 DROP TABLE IF EXISTS articlecomments CASCADE;
