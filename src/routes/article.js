@@ -8,9 +8,9 @@ import articleMiddleware from '../middleware/article';
 
 // const fs = require('fs');
 
-const location = path.join(__dirname, 'hhh/a/b');
+const location = path.join(__dirname, 'images');
 console.log('location', location);
-const upload = multer({ dest: 'images' });
+const upload = multer({ dest: location });
 
 const router = express.Router();
 // Create article

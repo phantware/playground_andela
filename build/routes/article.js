@@ -21,11 +21,11 @@ var _article2 = _interopRequireDefault(require("../middleware/article"));
 
 // import pool from '../config/db';
 // const fs = require('fs');
-var location = _path["default"].join(__dirname, 'hhh/a/b');
+var location = _path["default"].join(__dirname, 'images');
 
 console.log('location', location);
 var upload = (0, _multer["default"])({
-  dest: 'images'
+  dest: location
 });
 
 var router = _express["default"].Router(); // Create article
