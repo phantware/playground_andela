@@ -8,18 +8,20 @@
     "yarn": "1.21.1"
   },
   "scripts": {
-    "bundle": "babel src -d build --verbose",
+    "build": "babel src -d build --verbose",
     "start": "node ./build/server.js",
     "prefix": "eslint --fix",
     "fix": "prettier-eslint --write ",
     "start:dev": "nodemon -x \"babel-node ./src/server.js\" ",
+    "start:prod": "NODE_ENV=production PORT=5000 nodemon -x \"babel-node ./src/server.js\" ",
     "test": "jest --watchAll --verbose",
     "test:jest": "jest --coverage",
     "test:travis": "jest --coverage ",
     "start:db": "nodemon config/db.js",
     "sql": "nodemon -x 'psql -c \"\\i playground/image.sql\" andela postgres'  -e sql  ",
     "playground": "nodemon playground/obj-api.js",
-    "start-env": "nodemon config/index.js"
+    "start-env": "nodemon config/index.js",
+    "migration":"babel-node migration/index.js"
   },
   "repository": "git@github.com:phantware/playground_andela.git",
   "author": "phantware <phantmoney2011@gmail.com>",

@@ -1,4 +1,4 @@
-import pool from '../config/db';
+import pool from '../src/config/db';
 
 const allDommyDatas = `
 INSERT INTO employees (username, firstName, lastName, email, password, gender, jobRole, department, address) 
