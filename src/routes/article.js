@@ -10,7 +10,7 @@ import articleMiddleware from '../middleware/article';
 
 const location = path.join(__dirname, 'hhh/a/b');
 console.log('location', location);
-const upload = multer({ dest: 'src/images' });
+const upload = multer({ dest: 'images' });
 
 const router = express.Router();
 // Create article
@@ -33,7 +33,6 @@ router.get('/:articleid', articleController.viewSpecificArticle);
 // Delete Article
 router.delete('/:articleid', articleController.deleteArticle);
 
-
 router.post('/img', upload.single('avatar'), (req, res) => {
   // const { image } = req.body;
   console.log(req.file);
@@ -52,7 +51,8 @@ router.post('/img', upload.single('avatar'), (req, res) => {
 //   fs.rename(req.file.path, `${req.file.destination}${newFilename}`, async (err) => {
 //     if (err) return res.send(`ERROR: ${err}`);
 
-//     result = await pool.query('insert into images(title,images) values($1,$2) returning *;', [req.file, req.body]);
+//     result = await pool.query('insert into images(title,images)
+// values($1,$2) returning *;', [req.file, req.body]);
 
 //     // // req.file.title,
 //     // // newFilename;
