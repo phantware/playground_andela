@@ -8,6 +8,7 @@
     "yarn": "1.21.1"
   },
   "scripts": {
+    "bundle": "babel src -d build --verbose",
     "start": "node ./build/server.js",
     "prefix": "eslint --fix",
     "fix": "prettier-eslint --write ",
