@@ -1,6 +1,6 @@
 import app from './app';
 import pool from './config/db';
-import '../migration/index';
+import './migration';
 
 console.log(__dirname);
 pool

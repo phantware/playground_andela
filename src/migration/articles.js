@@ -1,4 +1,4 @@
-import pool from '../src/config/db';
+import pool from '../config/db';
 
 const createArticles = `
 DROP TABLE IF EXISTS articles CASCADE;

@@ -1,4 +1,4 @@
-import pool from '../src/config/db';
+import pool from '../config/db';
 
 const gifTable = `
 DROP TABLE IF EXISTS gifs CASCADE;
