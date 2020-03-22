@@ -3,19 +3,25 @@
   "version": "1.0.0",
   "description": "Testing Andela Project",
   "main": "app.js",
+  "engines": {
+    "node": "13.7.0",
+    "yarn": "1.21.1"
+  },
   "scripts": {
-    "build": "babel ./src/ --out-dir build",
+    "build": "babel src -d build --verbose",
     "start": "node ./build/server.js",
     "prefix": "eslint --fix",
     "fix": "prettier-eslint --write ",
-    "start:dev": "nodemon -x \"babel-node ./src/server.js\" ", 
+    "start:dev": "nodemon -x \"babel-node ./src/server.js\" ",
+    "start:prod": "NODE_ENV=production PORT=5000 nodemon -x \"babel-node ./src/server.js\" ",
     "test": "jest --watchAll --verbose",
     "test:jest": "jest --coverage",
     "test:travis": "jest --coverage ",
     "start:db": "nodemon config/db.js",
     "sql": "nodemon -x 'psql -c \"\\i playground/image.sql\" andela postgres'  -e sql  ",
     "playground": "nodemon playground/obj-api.js",
-    "start-env": "nodemon config/index.js"
+    "start-env": "nodemon config/index.js",
+    "migration":"babel-node migration/index.js"
   },
   "repository": "git@github.com:phantware/playground_andela.git",
   "author": "phantware <phantmoney2011@gmail.com>",
@@ -29,6 +35,7 @@
     "express": "^4.17.1",
     "global": "^4.4.0",
     "jsonwebtoken": "^8.5.1",
+    "mkdirp": "^1.0.3",
     "morgan": "^1.9.1",
     "multer": "^1.4.2",
     "pg": "^7.18.1"

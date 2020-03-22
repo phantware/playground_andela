@@ -1,11 +1,16 @@
 import express from 'express';
 import multer from 'multer';
+import path from 'path';
 import articleController from '../controllers/article';
 import authToken from '../middleware/auth';
 import articleMiddleware from '../middleware/article';
-import pool from '../config/db';
+// import pool from '../config/db';
 
-const fs = require('fs');
+// const fs = require('fs');
+
+const location = path.join(__dirname, 'images');
+console.log('location', location);
+const upload = multer({ dest: location });
 
 const router = express.Router();
 // Create article
@@ -28,39 +33,36 @@ router.get('/:articleid', articleController.viewSpecificArticle);
 // Delete Article
 router.delete('/:articleid', articleController.deleteArticle);
 
-router.post('/img', (req, res) => {
-  const { image } = req.body;
-  console.log(image);
+router.post('/img', upload.single('avatar'), (req, res) => {
+  // const { image } = req.body;
+  console.log(req.file);
+  console.log(req.body);
   res.status(200).send('correct guy');
 });
 
-// drop table images if exists;
-// create table images(title text, )
+// router.post('/profile', upload.single('avatar'), (req, res) => {
+//    req.file is the `avatar` file
+// req.body will hold the text fields, if there were any
+// ({ upload } = req.file);
+// console.log('this is file', req.file);
+// console.log('this is req.body', req.body);
+// let result;
+// const newFilename = `${req.file.filename}-${req.file.originalname}`;
+//   fs.rename(req.file.path, `${req.file.destination}${newFilename}`, async (err) => {
+//     if (err) return res.send(`ERROR: ${err}`);
 
-const upload = multer({ dest: '/home/jamiu/Desktop/playground_andela/src/images' });
-router.post('/profile', upload.single('avatar'), (req, res) => {
-  //    req.file is the `avatar` file
+//     result = await pool.query('insert into images(title,images)
+// values($1,$2) returning *;', [req.file, req.body]);
 
-  // req.body will hold the text fields, if there were any
-  //   ({ upload } = req.file);
-  console.log(req.file);
-  console.log(req.body);
+//     // // req.file.title,
+//     // // newFilename;
+//   });
+//   console.log('this is result', result);
+//   return res.status(200).send({ success: result.rows });
+// });
 
-  const newFilename = `${req.file.filename}-${req.file.originalname}`;
-  fs.rename(req.file.path, `${req.file.destination}${newFilename}`, async (err) => {
-    if (err) return res.send(`ERROR: ${err}`);
-
-    const result = await pool.query('insert into images(title,image) values($1,$2) returning *;', [
-      req.file.title,
-      newFilename,
-    ]);
-
-    return res.status(200).send({ success: result.rows });
-  });
-});
-
-router.use('*', (error, req, res) => {
-  console.log(error);
-  res.send('server not available');
-});
+// router.use('*', (error, req, res) => {
+//   console.log(error);
+//   res.send('server not available');
+// });
 export default router;
